@@ -19,10 +19,10 @@ usersテーブル
  itemsテーブル
  | Column             | Type   | Options    |
  | -------------------| ------ | -----------| 
- | name_id            | integer| null: false|
+ | name               | strige | null: false|
  | image_id           | integer| null: false|
  | category_id        | integer| null: false|
- | price_id           | integer| null: false|
+ | price              | integer| null: false|
  | date_of_shipment_id| integer| null: false|
  | spping_region_id   | integer| null: false|
  | bunder_id          | integer| null: false|
@@ -32,7 +32,6 @@ usersテーブル
  - belongs_to : user
  - has_one : address
  - has_many : controls
- - has_many : categorys
 
  addressテーブル
  | Column          | Type    | Options                     |
@@ -40,7 +39,7 @@ usersテーブル
  | postal_cod      | string  | null: false                 |
  | cities          | string  | null: false                 |
  | address         | string  | null: false                 |
- | building name   | string  |                             |
+ | building_name   | string  |                             |
  | phone number    | string  | null: false                 |
  | prefectures_id  | integer | null: false,foreign_key:true|
 

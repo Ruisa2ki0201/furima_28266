@@ -3,7 +3,7 @@
 usersテーブル
 | Column           | Type   | Options                 |
 | -----------------| ------ | ------------------------|
-| Nickname         | string | null: false             |
+| nickname         | string | null: false             |
 | email            | string | null: false,unique: true|
 | password         | string | null: false             |
 | birthday         | data   | null: false             |
@@ -19,12 +19,12 @@ usersテーブル
  itemsテーブル
  | Column             | Type   | Options    |
  | -------------------| ------ | -----------| 
- | name               | string | null: false|
- | image              | text   | null: false|
- | category           | string | null: false|
- | price              | integer| null: false|
+ | name_id            | integer| null: false|
+ | image_id           | integer| null: false|
+ | category_id        | integer| null: false|
+ | price_id           | integer| null: false|
  | date_of_shipment_id| integer| null: false|
- | spping_region_id    | integer| null: false|
+ | spping_region_id   | integer| null: false|
  | bunder_id          | integer| null: false|
  | product_status_id  | integer| null: false|
 
@@ -35,31 +35,26 @@ usersテーブル
  - has_many : categorys
 
  addressテーブル
- | Column       | Type   | Options    |
- | -------------| ------ | -----------|
- | postal_cod   | string | null: false|
- | cities       | string | null: false|
- | address      | string | null: false|
- | building name| string | null: false|
- | phone number | string | null: false|
+ | Column          | Type    | Options                     |
+ | ----------------| --------| ----------------------------|
+ | postal_cod      | string  | null: false                 |
+ | cities          | string  | null: false                 |
+ | address         | string  | null: false                 |
+ | building name   | string  |                             |
+ | phone number    | string  | null: false                 |
+ | prefectures_id  | integer | null: false,foreign_key:true|
 
  Association
  - belongs_to : item
 
  controlテーブル
- | Column | Type      | Options                     |
- | -------| ----------| ----------------------------|
- | user_id| references| null: false,foreign_key:true|
- | item_id| references| null: false,foreign_key:true|
+ | Column | Type    | Options                     |
+ | -------| --------| ----------------------------|
+ | user_id| integer | null: false,foreign_key:true|
+ | item_id| integer | null: false,foreign_key:true|
 
  Association
  - has_many : users
  - has_many : items
 
- categoryテーブル
- | Column    | Type      | Options                      |
- | ----------| ----------| -----------------------------|
- |category_id| references|null: false,foreign_key: true |
-
- Association
- - belongs_to : item
+ 

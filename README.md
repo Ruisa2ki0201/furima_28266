@@ -4,7 +4,7 @@ usersテーブル
 | Column           | Type   | Options                 |
 | -----------------| ------ | ------------------------|
 | nickname         | string | null: false             |
-| email            | string | null: false,unique: true|
+| email            | string | null: false             |
 | password         | string | null: false             |
 | birthday         | data   | null: false             |
 | surname          | string | null: false             |

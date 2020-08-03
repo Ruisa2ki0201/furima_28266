@@ -3,21 +3,22 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         validates :nickname, presence: true
-         validates :birthday, presence: true
-         validates :surname, presence: true
-         validates :name, presence: true
-         validates :phonetic_surname, presence: true
-         validates :phonetic_name, presence: true
-         validates :phonetic_surname, presence: true,
-                 format: {
-                   with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                   message: "全角カタカナのみで入力して下さい"
-                 }
-         validates :phonetic_name, presence: true,
-                 format: {
-                   with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-                   message: "全角カタカナのみで入力して下さい"
-                 }
-         
+
+         with_options presence: true do
+           validates :nickname
+           validates :birthday
+           validates :surname
+           validates :name
+           validates :phonetic_surname
+           validates :phonetic_name
+           validates :phonetic_surname, format: {with:/\A[ァ-ヶー－]+\z/,message: "は全角カタカナのみで入力してください"}
+           validates :phonetic_name, format: { with:/\A[ァ-ヶー－]+\z/, message: "は全角カタカナのみで入力してください"}
+           validates :password, format: { with:/\A[a-zA-Z0-9]+\z/,message: "は半角英数字混合であること"}
+           validates :password_confirmation, format: { with:/\A[a-zA-Z0-9]+\z/,message: "は半角英数字混合であること"}
+          end
+
+            validates :email,uniqueness: true
+            validates_uniqueness_of :nickname,case_sensitive: true
+            
+          
 end

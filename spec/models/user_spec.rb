@@ -29,6 +29,11 @@ describe User do
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
       
+      it "emailが重複すると登録できない" do
+        @user.email = "test@com" "test@com"
+        @user.valid?
+        expect(@user.errors[:email]).to include("is invalid")
+      end
       it "passwordが空だと登録できない" do
         @user.password = ""
         @user.valid?
@@ -46,12 +51,20 @@ describe User do
         @user.password_confirmation = "000000"
         expect(@user).to be_valid
       end
+
       it "passwordとpassword_confirmationは６文字以下だと登録できない" do
         @user.password = "00000"
         @user.password_confirmation = "00000"
         @user.valid?
-        binding.pry
         expect(@user.errors[:password]).to include("is too short (minimum is 6 characters)")
+      end
+      
+      it "passwordは半角英数字混合でないと登録できない" do
+        @user.password = "１１１１１１"
+        @user.password_confirmation = "１１１１１１"
+        @user.valid?
+        expect(@user.errors[:password]).to include("は半角英数字混合であること")
+        expect(@user.errors[:password_confirmation]).to include("は半角英数字混合であること")
       end
 
       it "birthdayが空だと登録できない" do
@@ -87,13 +100,13 @@ describe User do
       it "phonetic_surnameがカタカナでないと登録できない" do
         @user.phonetic_surname = "やまだ"
         @user.valid?
-        expect(@user.errors[:phonetic_surname]).to include("全角カタカナのみで入力して下さい")
+        expect(@user.errors[:phonetic_surname]).to include("は全角カタカナのみで入力してください")
       end
 
       it "phonetic_nameがカタカナでないと登録できない" do
         @user.phonetic_name = "たろう"
         @user.valid?
-        expect(@user.errors[:phonetic_name]).to include("全角カタカナのみで入力して下さい")
+        expect(@user.errors[:phonetic_name]).to include("は全角カタカナのみで入力してください")
       end
     end
   end

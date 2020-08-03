@@ -11,14 +11,18 @@ class User < ApplicationRecord
            validates :name
            validates :phonetic_surname
            validates :phonetic_name
-           validates :phonetic_surname, format: {with:/\A[ァ-ヶー－]+\z/,message: "は全角カタカナのみで入力してください"}
-           validates :phonetic_name, format: { with:/\A[ァ-ヶー－]+\z/, message: "は全角カタカナのみで入力してください"}
-           validates :password, format: { with:/\A[a-zA-Z0-9]+\z/,message: "は半角英数字混合であること"}
-           validates :password_confirmation, format: { with:/\A[a-zA-Z0-9]+\z/,message: "は半角英数字混合であること"}
           end
 
+            REGEX = /\A[ァ-ヶー－]+\z/.freeze
+            validates_format_of :phonetic_surname, with: REGEX, message: 'は全角カタカナのみで入力してください'
+            validates_format_of :phonetic_name, with: REGEX, message: 'は全角カタカナのみで入力してください'
+            
+            PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/.freeze
+            validates_format_of :password, with: PASSWORD_REGEX, message: 'は半角英数字混合であること'
+            validates_format_of :password_confirmation, with: PASSWORD_REGEX, message: 'は半角英数字混合であること'
+            
             validates :email,uniqueness: true
-            validates_uniqueness_of :nickname,case_sensitive: true
+            validates_uniqueness_of:nickname,case_sensitive: true
             
           
 end

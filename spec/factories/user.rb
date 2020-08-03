@@ -7,7 +7,7 @@ FactoryBot.define do
     email                      {"test@com"}
     password                   {"aaa000"}
     password_confirmation      {password}
-    birthday                   {2000-02-01}
+    birthday                   {Date.new(2000,2,1)}
     surname                    {"山田"}
     name                       {"太郎"}
     phonetic_surname           {"ヤマダ"}

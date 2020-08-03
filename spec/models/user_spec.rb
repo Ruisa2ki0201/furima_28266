@@ -30,9 +30,10 @@ describe User do
       end
       
       it "emailが重複すると登録できない" do
-        @user.email = "test@com" "test@com"
+        @user2 = FactoryBot.create(:user)
+        @user.email = "test@com"
         @user.valid?
-        expect(@user.errors[:email]).to include("is invalid")
+        expect(@user.errors[:email]).to include("has already been taken")
       end
       it "passwordが空だと登録できない" do
         @user.password = ""

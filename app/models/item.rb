@@ -30,4 +30,7 @@ class Item < ApplicationRecord
 
   validates :area_id, numericality: { other_than: 1 }
 
+  validates :price, numericality: { less_than_or_equal_to: 9999999 }
+  
+  validates :price, numericality: { greater_than: 300 }
 end

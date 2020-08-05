@@ -10,6 +10,9 @@ class Item < ApplicationRecord
   
 
   with_options presence: true do
+    validates :name
+    validates :text
+    validates :price
     validates :genre_id
     validates :status_id
     validates :bunder_id

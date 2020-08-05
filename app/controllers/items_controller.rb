@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  
+  before_action :move_to_index, except: [:index]
   def index
   end
 
@@ -9,14 +9,24 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create(item_params)
-    @item.save
-    redirect_to root_path
+    if @item.save
+      redirect_to root_path
+    else
+      flash.now[:error] = 'shared/error_messages'
+      render :new
+    end
   end
 
   private
 
   def item_params
     params.require(:item).permit(:name,:text,:price,:genre_id,:status_id,:bunder_id,:shipment_id,:area_id,:image)
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to new_user_registration_path
+    end
   end
 
 end

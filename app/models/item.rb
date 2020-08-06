@@ -6,7 +6,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipment
   belongs_to_active_hash :area
   has_one_attached :image
-
   
 
   with_options presence: true do

@@ -23,6 +23,8 @@ class User < ApplicationRecord
             
             validates :email,uniqueness: true
             validates_uniqueness_of:nickname,case_sensitive: true
+
+            has_many :items
             
             
           

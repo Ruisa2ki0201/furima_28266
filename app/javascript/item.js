@@ -8,7 +8,6 @@ window.addEventListener('load',function(){
     const input_price = input.value;
     input_price2 = Math.floor(input_price*0.1)
     input_price3 = Math.floor(input_price*0.9)
-    console.log(input_price2)
     
     price.innerHTML = input_price2;
     content.innerHTML = input_price3;

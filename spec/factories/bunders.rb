@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :bunder do
-    name {"test"}
+    name { 'test' }
   end
 end

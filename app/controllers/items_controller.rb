@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :update]
   before_action :move_to_index, except: [:index, :show]
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -19,6 +20,21 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      flash.now[:error] = 'shared/error_messages'
+      render :edit
+    end
+  end
+
+  def set_item
     @item = Item.find(params[:id])
   end
 

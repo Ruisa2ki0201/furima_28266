@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
   has_one_attached :image
   belongs_to :user
-  
 
   with_options presence: true do
     validates :name
@@ -19,7 +18,7 @@ class Item < ApplicationRecord
     validates :shipment_id
     validates :area_id
   end
-  
+
   validates :genre_id, numericality: { other_than: 1 }
 
   validates :status_id, numericality: { other_than: 1 }
@@ -30,7 +29,15 @@ class Item < ApplicationRecord
 
   validates :area_id, numericality: { other_than: 1 }
 
-  validates :price, numericality: { less_than_or_equal_to: 9999999 }
-  
+  validates :price, numericality: { less_than_or_equal_to: 9_999_999 }
+
   validates :price, numericality: { greater_than: 300 }
+
+  def previous
+    Item.where('id < ?', id).order('id DESC').first
+  end
+
+  def next
+    Item.where('id > ?', id).order('id ASC').first
+  end
 end

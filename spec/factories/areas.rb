@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :area do
-    name {"test"}
+    name { 'test' }
   end
 end

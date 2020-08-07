@@ -196,6 +196,12 @@
   color: #3CCACE;
 }
 
+.change-item-btn2 {
+  font-size: 30px;
+  text-decoration: none;
+  color: #3CCACE;
+}
+
 .another-item {
   display: block;
   margin: 30px 0px 8px;

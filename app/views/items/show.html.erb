@@ -31,8 +31,9 @@
     <% end %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% if user_signed_in? && current_user.id != @item.user_id %>
-    <%= link_to '購入画面に進む', order_path(@item.id) ,class:"item-red-btn"%>
+    <%= link_to '購入画面に進む',  new_item_order_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
+    items/2/orders
     <%# //商品が売れていない場合はこちらを表示しましょう %>
     
     <%# //ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>

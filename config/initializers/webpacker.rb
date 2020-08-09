@@ -1,1 +1,1 @@
-Webpacker::Compiler.env["sk_test_8ecc2866ce795870c146b8f4"] = ENV["sk_test_8ecc2866ce795870c146b8f4"]
+Webpacker::Compiler.env["PAYJP_PUBLIC_KEY"] = ENV["PAYJP_PUBLIC_KEY"]

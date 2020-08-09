@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :move_to_index, only: [:new]
   def index
   end
 
   def new
     @item = Item.find(params[:item_id])
-
+    redirect_to root_path if current_user.id == @item.user_id || Order.find_by(item_id: @item.id).present?
     session[:id] = @item.id
   end
 
@@ -18,7 +19,6 @@ class OrdersController < ApplicationController
       render 'new'
     end
   end
-
   
 
   private
@@ -35,6 +35,10 @@ class OrdersController < ApplicationController
       card: order_params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類
     )
+  end
+
+  def move_to_index
+    redirect_to root_path unless user_signed_in?
   end
 
 end

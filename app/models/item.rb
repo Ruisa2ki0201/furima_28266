@@ -19,6 +19,7 @@ class Item < ApplicationRecord
     validates :bunder_id
     validates :shipment_id
     validates :area_id
+    validates :image
   end
 
   validates :genre_id, numericality: { other_than: 1 }

@@ -135,11 +135,7 @@
           <%# 商品が売れていればsold outの表示 %>
           <% if Order.find_by(item_id: item.id).present? %>
           <div class='sold-out'>
-            <% image_tag item.image,class: "item-img" %><span>Sold Out!!</span>
-          </div>
-          <% else %>
-          <div class='sold-out'>
-            <% image_tag item.image,class: "item-img" %>
+          <span>Sold Out!!</span>
           </div>
           <% end %>
           <%# //商品が売れていればsold outの表示 %>

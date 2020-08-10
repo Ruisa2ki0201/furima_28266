@@ -10,13 +10,9 @@
       <%= image_tag @item.image,class:"item-box-img" %>
       <%# 商品が売れている場合は、sould outの表示をしましょう。 %>
       <% if @order.present? %>
-       <div class='sold-out'>
-          <% image_tag @item.image,class: "item-box-img" %><span>Sold Out!!</span>
-        </div>
-      <% else  %>
-        <div class='sold'>
-         <% image_tag @item.image,class: "item-box-img" %>
-        </div>
+      <div class='sold-out'>
+      <span>Sold Out!!</span>
+      </div>
       <% end %>
       <%# //商品が売れている場合は、sould outの表示をしましょう。 %>
     </div>

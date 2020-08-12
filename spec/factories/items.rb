@@ -8,5 +8,6 @@ FactoryBot.define do
     bunder
     shipment
     area
+    user
   end
 end

@@ -1,0 +1,20 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+       birthday: 生年月日
+       surname: 姓
+       name: 名
+       phonetic_surname: フリガナ(姓)
+       phonetic_name: フリガナ(名)
+     item:
+       name: 商品名
+       text: 商品の説明
+       price: 金額
+       image: 画像
+       genre_id: 商品のジャンル
+       status_id: 商品の状態
+       shipment_id: 発送元の地域
+       area_id: 発送までの日数
+       bunder_id: 配送料の負担

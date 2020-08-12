@@ -14,37 +14,37 @@ describe User do
       it 'nicknameが空だと登録できない' do
         @user.nickname = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+        expect(@user.errors.full_messages).to include("ニックネームを入力してください")
       end
 
       it 'emailが空だと登録できない' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
+        expect(@user.errors.full_messages).to include("Eメールを入力してください")
       end
 
       it 'emailに＠が含まれていないと登録できない' do
         @user.email = 'testcom'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Email is invalid')
+        expect(@user.errors.full_messages).to include('Eメールは不正な値です')
       end
 
       it 'emailが重複すると登録できない' do
         @user2 = FactoryBot.create(:user)
         @user.email = 'test@com'
         @user.valid?
-        expect(@user.errors[:email]).to include('has already been taken')
+        expect(@user.errors[:email]).to include("はすでに存在します")
       end
       it 'passwordが空だと登録できない' do
         @user.password = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
+        expect(@user.errors.full_messages).to include("パスワードを入力してください")
       end
 
       it 'passwordが存在してもpassword_confirmationが空だと登録できない' do
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors[:password_confirmation]).to include("doesn't match Password")
+        expect(@user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません", "は半角英数字混合であること")
       end
 
       it 'passwordとpassword_confirmationが6文字以上で登録できる' do
@@ -57,7 +57,7 @@ describe User do
         @user.password = '00000'
         @user.password_confirmation = '00000'
         @user.valid?
-        expect(@user.errors[:password]).to include('is too short (minimum is 6 characters)')
+        expect(@user.errors[:password]).to include("は6文字以上で入力してください")
       end
 
       it 'passwordは半角英数字混合でないと登録できない' do
@@ -71,31 +71,31 @@ describe User do
       it 'birthdayが空だと登録できない' do
         @user.birthday = ''
         @user.valid?
-        expect(@user.errors[:birthday]).to include("can't be blank")
+        expect(@user.errors[:birthday]).to include("を入力してください")
       end
 
       it 'surnameが空だと登録できない' do
         @user.surname = ''
         @user.valid?
-        expect(@user.errors[:surname]).to include("can't be blank")
+        expect(@user.errors[:surname]).to include("を入力してください")
       end
 
       it 'nameが空だと登録できない' do
         @user.name = ''
         @user.valid?
-        expect(@user.errors[:name]).to include("can't be blank")
+        expect(@user.errors[:name]).to include("を入力してください")
       end
 
       it 'phonetic_surnameが空だと登録できない' do
         @user.phonetic_surname = ''
         @user.valid?
-        expect(@user.errors[:phonetic_surname]).to include("can't be blank")
+        expect(@user.errors[:phonetic_surname]).to include("を入力してください")
       end
 
       it 'phonetic_nameが空だと登録できない' do
         @user.phonetic_name = ''
         @user.valid?
-        expect(@user.errors[:phonetic_name]).to include("can't be blank")
+        expect(@user.errors[:phonetic_name]).to include("を入力してください")
       end
 
       it 'phonetic_surnameがカタカナでないと登録できない' do

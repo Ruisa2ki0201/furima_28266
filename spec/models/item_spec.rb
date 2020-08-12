@@ -6,6 +6,13 @@ describe Item do
   end
 
   describe '商品出品機能'
+  context '商品出品がうまくいくとき' do
+    it '全ての情報が存在していれば出品できる' do
+      expect(@item).to be_valid
+      binding.pry
+    end
+  end
+
   context '商品出品がうまくいかないとき' do
 
     it 'nameが空だと商品出品できない' do

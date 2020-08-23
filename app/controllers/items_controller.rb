@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
 
   def show
     @order = Order.find_by(item_id: @item.id)
+    @messages = @item.messages.includes(:user)
+    @message = Message.new
   end
 
   def edit

@@ -25,4 +25,5 @@ class User < ApplicationRecord
   validates_uniqueness_of :nickname, case_sensitive: true
 
   has_many :items
+  has_many :messages
 end

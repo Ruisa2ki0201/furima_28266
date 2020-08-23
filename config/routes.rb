@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get '/users/sign_out' => 'devise/sessions#destroy'
   resources :items do
     resources :orders, only: [:new, :create]
+    resources :messages, only: [:create]
   end
 end

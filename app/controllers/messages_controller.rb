@@ -4,11 +4,7 @@ class MessagesController < ApplicationController
     @item = Item.find(params[:item_id])
     @message = Message.new(message_params)
     if @message.save
-      # ActionCable.server.broadcast 'message_channel', content: @message
-      # ActionCable.server.broadcast 'message_channel', (@item,  {content: @message, user: current_user})
-      # binding.pry
       MessageChannel.broadcast_to(@item,  {content: @message, user: current_user})
-
     end
   end
 
